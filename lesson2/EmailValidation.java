@@ -13,22 +13,22 @@ public class EmailValidation { //will ignore quoted email
 			"captain@thecant.com"
 	};
 	
-	public boolean validateEmail(String emailtovalidate) {
-		String regexdoublepoint = ".*[.]{2}.*";
-		String emailpattern ="[a-zA-Z0-9!#$&'*+-/=?^_`{|}~]*@[a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9][.][a-zA-Z]*"; // email construction rulles from wikipedia
+	public boolean validateEmail(String emailToValidate) {
+		String regexDoublePoint = ".*[.]{2}.*";
+		String emailPattern ="[a-zA-Z0-9!#$&'*+-/=?^_`{|}~]*@[a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9][.][a-zA-Z]*"; // email construction rulles from wikipedia
 				
-		Pattern pattern = Pattern.compile(regexdoublepoint);
-		Matcher matcher = pattern.matcher(emailtovalidate);
+		Pattern pattern = Pattern.compile(regexDoublePoint);
+		Matcher matcher = pattern.matcher(emailToValidate);
 		if(matcher.matches()) {
 			System.out.println("Invalid email format , email with consecutive '.'");
 			return false;
 		}
 		else {
-			pattern = Pattern.compile(emailpattern);
-			matcher = pattern.matcher(emailtovalidate);
+			pattern = Pattern.compile(emailPattern);
+			matcher = pattern.matcher(emailToValidate);
 			if(matcher.matches()) {
 				for (int i=0;i<VALIDEMAILS.length;i++) {
-					if (VALIDEMAILS[i].toLowerCase().equals(emailtovalidate.toLowerCase())) { // email servers are not case sensitive
+					if (VALIDEMAILS[i].toLowerCase().equals(emailToValidate.toLowerCase())) { // email servers are not case sensitive
 						System.out.println("Email recognized... welcome");
 						return true;
 					}
@@ -48,12 +48,12 @@ public class EmailValidation { //will ignore quoted email
 		
 		EmailValidation email = new EmailValidation();
 		Scanner sc = new Scanner(System.in);
-		String userinput;
+		String userInput;
 		do {
 			System.out.println("Enter your email:");
-		userinput = sc.next();
+		userInput = sc.next();
 		}
-		while(!email.validateEmail(userinput));
+		while(!email.validateEmail(userInput));
 		System.out.println("Terminating after email validation... bye");
 		sc.close();
 	}
